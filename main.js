@@ -1,23 +1,127 @@
+// Prints input to DOM
 const printToDOM = (divId, infoToPrint) => {
   const selectedDiv = document.getElementById(divId);
   selectedDiv.innerHTML = infoToPrint;
-}
-
-const language = {
-        merry: ['merry','gaja','fröhlich','メリー'],
-        christmas: ['christmas','Kristnasko','Weihnachten','クリスマス'],
-        and: ['and','kaj','und','そして'],
-        happy: ['happy','feliĉa','glücklich','ハッピー'],
-        news: ['new','nova','Neu','新しい'],
-        year:['year','jaro','Jahr','年']
 };
 
-for (const prop in language) {
-    console.log(`language.${prop} = ${language[prop]}`);
+const language = {
+  merry: ['merry','gaja','fröhlich','メリー'],
+  christmas: ['christmas','kristnasko','Weihnachten','クリスマス'],
+  and: ['and','kaj','und','そして'],
+  happy: ['happy','feliĉa','glücklich','ハッピー'],
+  news: ['new','nova','Neu','新しい'],
+  year:['year','jaro','Jahr','年']
+};
+
+// turn languagne object keys into an array
+const keyArray = Object.keys(language);
+
+// buttons
+const espirantobutt = document.getElementById('Esperanto');
+const germanbutt = document.getElementById('German');
+const japanesebutt = document.getElementById('Japanese');
+// end buttons
+
+// Takes value from textarea and makes it lower case and turns it into an array
+const getTextValue = () => {
+  let toTranslate = document.getElementById('toTranslate');
+  let translateText = toTranslate.value;
+  let lowerCaseInput = translateText.toLowerCase();
+  let arrayOfText = lowerCaseInput.split(' ');
+  console.log(lowerCaseInput);
+  return arrayOfText;
+};
+
+const translateEspiranto = () => {
+  printToDOM('printHere', '');
+  let needsTranslation = getTextValue();
+  let engVersion = `<strong>English:</strong> `;
+  let translation = `<strong>Translation:</strong> `;
+  let printed = false;
+  // loop through input from user
+  for (i = 0; i < needsTranslation.length; i++) {
+    let validator = needsTranslation[i];
+    // loop through keys in language object
+    for (j = 0; j < keyArray.length; j++) {
+      let langChecker = keyArray[j];
+      // checks if user input array index value matches value in key array
+      if (language[langChecker][0] === validator) {
+        engVersion += `${language[langChecker][0]} `;
+        translation += `${language[langChecker][1]} `;
+        printed = true;
+      } else {
+        console.log('moving on');
+      }
+    }
   }
+  engVersion += translation;
+  if (printed) {
+    printToDOM('printHere', engVersion);
+  } else {
+    console.log('empty');
+  }
+};
 
-// language.christmas.forEach(function(item, index, array) {
-//     console.log(index, item, array);
-// });
+const translateGerman = () => {
+  printToDOM('printHere', '');
+  let needsTranslation = getTextValue();
+  let engVersion = `<strong>English:</strong> `;
+  let translation = `<strong>Translation:</strong> `;
+  let printed = false;
+  // loop through input from user
+  for (i = 0; i < needsTranslation.length; i++) {
+    let validator = needsTranslation[i];
+    // loop through keys in language object
+    for (j = 0; j < keyArray.length; j++) {
+      let langChecker = keyArray[j];
+      // checks if user input array index value matches value in key array
+      if (language[langChecker][0] === validator) {
+        engVersion += `${language[langChecker][0]} `;
+        translation += `${language[langChecker][2]} `;
+        printed = true;
+      } else {
+        console.log('moving on');
+      }
+    }
+  }
+  engVersion += translation;
+  if (printed) {
+    printToDOM('printHere', engVersion);
+  } else {
+    console.log('empty');
+  }
+};
 
-printToDOM ('printHere', 'I function');
+const translateJapanese = () => {
+  printToDOM('printHere', '');
+  let needsTranslation = getTextValue();
+  let engVersion = `<strong>English:</strong> `;
+  let translation = `<strong>Translation:</strong> `;
+  let printed = false;
+  // loop through input from user
+  for (i = 0; i < needsTranslation.length; i++) {
+    let validator = needsTranslation[i];
+    // loop through keys in language object
+    for (j = 0; j < keyArray.length; j++) {
+      let langChecker = keyArray[j];
+      // checks if user input array index value matches value in key array
+      if (language[langChecker][0] === validator) {
+        engVersion += `${language[langChecker][0]} `;
+        translation += `${language[langChecker][3]} `;
+        printed = true;
+      } else {
+        console.log('moving on');
+      }
+    }
+  }
+  engVersion += translation;
+  if (printed) {
+    printToDOM('printHere', engVersion);
+  } else {
+    console.log('empty');
+  }
+};
+
+espirantobutt.addEventListener('click',translateEspiranto);
+germanbutt.addEventListener('click', translateGerman);
+japanesebutt.addEventListener('click', translateJapanese);
