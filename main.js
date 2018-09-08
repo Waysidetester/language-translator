@@ -4,7 +4,7 @@ const printToDOM = (divId, infoToPrint) => {
   selectedDiv.innerHTML = infoToPrint;
 };
 
-printToDOM('inputField', '<textarea name="words" id="toTranslate" class="valid" cols="30" rows="1"></textarea>');
+printToDOM('inputField', '<textarea name="words" id="toTranslate" class="valid input" cols="30" rows="1"></textarea>');
 
 const language = {
   merry: ['merry','gaja','fröhlich','メリー'],
@@ -61,11 +61,11 @@ const translateEspiranto = () => {
   engVersion += translation;
   if (printed) {
     printToDOM('printHere', engVersion);
-    newInputField = '<textarea name="words" id="toTranslate" class="valid" cols="30" rows="1"></textarea>';
+    newInputField = '<textarea name="words" id="toTranslate" class="valid input" cols="30" rows="1"></textarea>';
     printToDOM('inputField', newInputField)
 
   } else {
-    newInputField = '<textarea placeholder="Invalid Entry" name="words" id="toTranslate" class="invalid" cols="30" rows="1"></textarea>';
+    newInputField = '<textarea placeholder="Invalid Entry" name="words" id="toTranslate" class="invalid input" cols="30" rows="1"></textarea>';
     printToDOM('inputField', newInputField);
   }
 };
@@ -95,8 +95,12 @@ const translateGerman = () => {
   engVersion += translation;
   if (printed) {
     printToDOM('printHere', engVersion);
+    newInputField = '<textarea name="words" id="toTranslate" class="valid input" cols="30" rows="1"></textarea>';
+    printToDOM('inputField', newInputField)
+
   } else {
-    console.log('empty');
+    newInputField = '<textarea placeholder="Invalid Entry" name="words" id="toTranslate" class="invalid input" cols="30" rows="1"></textarea>';
+    printToDOM('inputField', newInputField);
   }
 };
 
@@ -125,8 +129,12 @@ const translateJapanese = () => {
   engVersion += translation;
   if (printed) {
     printToDOM('printHere', engVersion);
+    newInputField = '<textarea name="words" id="toTranslate" class="valid input" cols="30" rows="1"></textarea>';
+    printToDOM('inputField', newInputField)
+
   } else {
-    console.log('empty');
+    newInputField = '<textarea placeholder="Invalid Entry" name="words" id="toTranslate" class="invalid input" cols="30" rows="1"></textarea>';
+    printToDOM('inputField', newInputField);
   }
 };
 
