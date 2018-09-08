@@ -1,3 +1,8 @@
+const printToDOM = (divId, infoToPrint) => {
+  const selectedDiv = document.getElementById(divId);
+  selectedDiv.innerHTML = infoToPrint;
+}
+
 const language = {
         merry: ['merry','gaja','fröhlich','メリー'],
         christmas: ['christmas','Kristnasko','Weihnachten','クリスマス'],
@@ -7,7 +12,12 @@ const language = {
         year:['year','jaro','Jahr','年']
 };
 
-console.log(language.and[2]);
-console.log(language.merry[3]);
-console.log(language.christmas[1]);
-console.log(language.year[0]);
+for (const prop in language) {
+    console.log(`language.${prop} = ${language[prop]}`);
+  }
+
+// language.christmas.forEach(function(item, index, array) {
+//     console.log(index, item, array);
+// });
+
+printToDOM ('printHere', 'I function');
