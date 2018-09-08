@@ -4,6 +4,8 @@ const printToDOM = (divId, infoToPrint) => {
   selectedDiv.innerHTML = infoToPrint;
 };
 
+printToDOM('inputField', '<textarea name="words" id="toTranslate" class="valid" cols="30" rows="1"></textarea>');
+
 const language = {
   merry: ['merry','gaja','fröhlich','メリー'],
   christmas: ['christmas','kristnasko','Weihnachten','クリスマス'],
@@ -20,7 +22,9 @@ const keyArray = Object.keys(language);
 const espirantobutt = document.getElementById('Esperanto');
 const germanbutt = document.getElementById('German');
 const japanesebutt = document.getElementById('Japanese');
-// end buttons
+
+
+let newInputField
 
 // Takes value from textarea and makes it lower case and turns it into an array
 const getTextValue = () => {
@@ -57,8 +61,12 @@ const translateEspiranto = () => {
   engVersion += translation;
   if (printed) {
     printToDOM('printHere', engVersion);
+    newInputField = '<textarea name="words" id="toTranslate" class="valid" cols="30" rows="1"></textarea>';
+    printToDOM('inputField', newInputField)
+
   } else {
-    console.log('empty');
+    newInputField = '<textarea placeholder="Invalid Entry" name="words" id="toTranslate" class="invalid" cols="30" rows="1"></textarea>';
+    printToDOM('inputField', newInputField);
   }
 };
 
