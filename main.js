@@ -6,17 +6,44 @@ const printToDOM = (divId, infoToPrint) => {
 
 printToDOM('inputField', '<textarea name="words" id="toTranslate" class="valid input" cols="30" rows="1"></textarea>');
 
-const language = {
-  merry: ['merry','gaja','fröhlich','メリー'],
-  christmas: ['christmas','kristnasko','Weihnachten','クリスマス'],
-  and: ['and','kaj','und','そして'],
-  happy: ['happy','feliĉa','glücklich','ハッピー'],
-  news: ['new','nova','Neu','新しい'],
-  year:['year','jaro','Jahr','年']
+const english = {
+  merry: 'merry',
+  christmas: 'christmas',
+  and: 'and',
+  happy: 'happy',
+  news: 'new',
+  year:'year'
+};
+
+const esperanto = {
+  merry:'gaja',
+  christmas:'kristnasko',
+  and:'kaj',
+  happy:'feliĉa',
+  news:'nova',
+  year:'jaro'
+};
+
+const german = {
+  merry:'fröhlich',
+  christmas:'Weihnachten',
+  and:'und',
+  happy:'glücklich',
+  news:'Neu',
+  year:'Jahr'
+};
+
+const japanese = {
+  merry:'メリー',
+  christmas:'クリスマス',
+  and:'そして',
+  happy:'ハッピー',
+  news:'新しい',
+  year:'年'
 };
 
 // turn languagne object keys into an array
-const keyArray = Object.keys(language);
+const keyArray = Object.keys(english);
 
 // buttons
 const espirantobutt = document.getElementById('Esperanto');
@@ -32,7 +59,6 @@ const getTextValue = () => {
   let translateText = toTranslate.value;
   let lowerCaseInput = translateText.toLowerCase();
   let arrayOfText = lowerCaseInput.split(' ');
-  console.log(lowerCaseInput);
   return arrayOfText;
 };
 
@@ -49,12 +75,10 @@ const translateEspiranto = () => {
     for (j = 0; j < keyArray.length; j++) {
       let langChecker = keyArray[j];
       // checks if user input array index value matches value in key array
-      if (language[langChecker][0] === validator) {
-        engVersion += `${language[langChecker][0]} `;
-        translation += `${language[langChecker][1]} `;
+      if (english[langChecker] === validator) {
+        engVersion += `${english[langChecker]} `;
+        translation += `${esperanto[langChecker]} `;
         printed = true;
-      } else {
-        console.log('moving on');
       }
     }
   }
@@ -83,12 +107,10 @@ const translateGerman = () => {
     for (j = 0; j < keyArray.length; j++) {
       let langChecker = keyArray[j];
       // checks if user input array index value matches value in key array
-      if (language[langChecker][0] === validator) {
-        engVersion += `${language[langChecker][0]} `;
-        translation += `${language[langChecker][2]} `;
+      if (english[langChecker] === validator) {
+        engVersion += `${english[langChecker]} `;
+        translation += `${german[langChecker]} `;
         printed = true;
-      } else {
-        console.log('moving on');
       }
     }
   }
@@ -117,13 +139,11 @@ const translateJapanese = () => {
     for (j = 0; j < keyArray.length; j++) {
       let langChecker = keyArray[j];
       // checks if user input array index value matches value in key array
-      if (language[langChecker][0] === validator) {
-        engVersion += `${language[langChecker][0]} `;
-        translation += `${language[langChecker][3]} `;
+      if (english[langChecker] === validator) {
+        engVersion += `${english[langChecker]} `;
+        translation += `${japanese[langChecker]} `;
         printed = true;
-      } else {
-        console.log('moving on');
-      }
+      } 
     }
   }
   engVersion += translation;
