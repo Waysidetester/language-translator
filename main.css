@@ -1,0 +1,47 @@
+.invalid {
+    border: 3px solid red;
+    border-radius: 2px;
+}
+
+.invalid:focus {
+    outline: 0;
+}
+
+.invalid::placeholder {
+    font-style: italic;
+    font-family: sans-serif;
+}
+
+.valid {
+    border: 3px solid lightblue;
+    border-radius: 2px;
+}
+
+.valid:focus {
+    outline: 0;
+}
+
+#translationCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    margin: 25px;
+}
+
+strong {
+    margin-right: 3px;
+    margin-left: 8px;
+}
+
+nav h1 {
+    text-align: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
